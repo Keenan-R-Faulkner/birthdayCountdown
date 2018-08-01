@@ -48,7 +48,7 @@ export default class App extends Component {
     } else if(birthMonth < currentMonth) {
       bday.setFullYear(today.getFullYear() + 1)
     } else if(birthMonth == currentMonth) {
-      var currentDay = today.getDay();
+      var currentDay = today.getDate();
       var birthday = bday.getDate();
 
       if(birthday > currentDay) {
