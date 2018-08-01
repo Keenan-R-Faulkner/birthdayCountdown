@@ -28,8 +28,8 @@ export default class App extends Component {
     this.handleGenerate = this.handleGenerate.bind(this)
   }
 
-  handleChange = function (date) {
-
+  handleChange = function(date) {
+    console.log("APP JS HANDLE CHANGE", date._d);
     clearInterval(this.timer);
     this.setState({
       startDate: date
@@ -44,9 +44,11 @@ export default class App extends Component {
     var currentMonth = today.getMonth();
     var birthMonth = bday.getMonth();
 
+    const monthDay = this.getBirthdate(bday);
+    console.log("hello World");
     var timeBetween = today.getTime() - bday.getTime();
     var daysOld = Math.floor(timeBetween / (1000 * 60 * 60 *24));
-    var yearsOld = Number((daysOld / 365).toFixed(0));
+    var yearsOld = Number((daysOld/365).toFixed(0));
     this.setState({ 
       age, 
       active: true
@@ -72,16 +74,14 @@ export default class App extends Component {
     this.timer = setInterval(function () {
 
       var now = today.getTime();
-
       var distance = countDownDate - now;
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60 * 60 * 24)) / 1000);
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       const time = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
       const timeRemaining = {
         days,
         hours,
@@ -91,13 +91,17 @@ export default class App extends Component {
 
       this.setState({ timeRemaining })
 
-
-
       if (distance < 0) {
         clearInterval(this.timer);
       }
     }.bind(this), 1000);
-  }.bind(this)
+  }.bind(this);
+
+  getBirthdate = function(date) {
+    const month = date.getMonth();
+    const day = date.getDate();
+    return`${month}/${day}`;
+  }.bind(this);
 
   renderItems = function () {
     if (this.state.active) {
