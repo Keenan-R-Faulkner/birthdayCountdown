@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Basic skeleton codebase for React with Bootstrap applications.",
   "scripts": {
-    "postinstall": "cp env.example.js env.js",
+    "postinstall": "copy env.example.js env.js",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
     "heroku-postbuild": "npm run build",
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/bottega-code-school/js-builder",
   "devDependencies": {
-    "webpack-dev-server": "^2.5.1"
+    "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
     "autoprefixer": "^7.1.2",
@@ -57,12 +57,14 @@
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "moment": "^2.22.2",
+    "node-env-file": "^0.1.8",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
-    "react": "^16.2.0",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
     "react-datepicker": "^1.5.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.4.1",
     "reactstrap": "^5.0.0-alpha.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
