@@ -44,8 +44,6 @@ export default class App extends Component {
     var currentMonth = today.getMonth();
     var birthMonth = bday.getMonth();
 
-    // const monthDay = this.getBirthdate(bday);
-    // console.log("hello World");
     var timeBetween = today.getTime() - bday.getTime();
     var daysOld = Math.floor(timeBetween / (1000 * 60 * 60 *24));
     var age = Math.ceil(daysOld/365);
@@ -111,12 +109,12 @@ export default class App extends Component {
       return [
         <Clock key={0} timeRemaining={this.state.timeRemaining} />,
         ChangeDate('Change Date', () => this.setState({ active: false })),
-        LargeText('04/03'),
+        LargeText(this.getBirthdate(this.state.startDate.toDate())),
         <label key={3} className="grid__remaining">Remaining until you turn {this.state.age}</label>
       ]
     } else {
       return [
-        <Picker startDate={this.state.startDate} callback={(date) => this.handleChange(date)} key={0}/>,
+        <Picker key={0}startDate={this.state.startDate} callback={(date) => this.handleChange(date)}/>,
         Button('Generate Countdown', () => this.handleGenerate())
       ];
     }
