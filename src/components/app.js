@@ -99,7 +99,7 @@ export default class App extends Component {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     if(month < 10) {
-      return`0${month}/${day}`;
+      return`0${month}/0${day}`;
     }
     return`${month}/${day}`;
   }.bind(this);
